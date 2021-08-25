@@ -1,18 +1,29 @@
-const {fetchMyIP, fetchCoordsByIP} = require('./iss');
+// const {fetchMyIP, fetchCoordsByIP} = require('./iss');
 
-fetchMyIP((error, ip) => {
+// fetchMyIP((error, ip) => {
+//   if (error) {
+//     console.log("It didn't work!" , error);
+//     return;
+//   }
+//   console.log('It worked! Returned IP:' , ip);
+// });
+
+// fetchCoordsByIP('162.245.144.188', (error, coordinates) => {
+//   if (error) {
+//     console.log("It didn't work!" , error);
+//     return;
+//   }
+//   console.log('It worked! Returned coordinates:' , coordinates);
+// });
+//*******************************************************************************************
+
+
+const { nextISSTimesForMyLocation } = require('./iss');
+
+nextISSTimesForMyLocation((error, passTimes) => {
   if (error) {
-    console.log("It didn't work!" , error);
-    return;
+    return console.log("It didn't work!", error);
   }
-  console.log('It worked! Returned IP:' , ip);
+  // success, print out the deets!
+  console.log(passTimes);
 });
-
-fetchCoordsByIP((error,coordinates)=>{
-  if (error) {
-    console.log("It didn't work!" , error);
-    return;
-  }
-  console.log(`Latitude: ${coordinates.latitude}, Longitude: ${coordinates.longitude}`);
-});
-
